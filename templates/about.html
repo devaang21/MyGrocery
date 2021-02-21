@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+{% block title %}
+About
+{% endblock title %}
+{% block body %}
+<main role="main">
+
+    <!-- Main jumbotron for a primary marketing message or call to action -->
+    <div class="jumbotron">
+      <div class="container">
+        <h1 class="display-3">My Grocery</h1>
+        <p>My Grocery Pvt Ltd. is an Indian electronic commerce company based in Mumbai, India. Founded by Devaang Barthwal in 2020, 
+  In August 2020, U.S.-based retail chain Walmart acquired a 77% controlling stake in My Grocery for US$16 billion, valuing it at $22 billion.</p>
+        <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more »</a></p>
+      </div>
+    </div>
+  
+    <div class="container">
+      <!-- Example row of columns -->
+      <div class="row">
+        <div class="col-md-4">
+          <h2>Products</h2>
+          <p>Discover new products and shop for all your food and grocery needs from the comfort of your home or office. No more getting stuck in traffic jams , standing in long queues and carrying heavy bags. </p>
+          <p><a class="btn btn-secondary" href="/polls" role="button">View details »</a></p>
+        </div>
+        <div class="col-md-4">
+          <h2>Quality</h2>
+          <p>Food shopping online is now easy as every product on your monthly shopping list, is now available online at My Grocery, India’s best online grocery store! Get Fresh Fruits and Vegies right at your doorstep </p>
+          <p><a class="btn btn-secondary" href="/polls" role="button">View details »</a></p>
+        </div>
+        <div class="col-md-4">
+          <h2>Price</h2>
+          <p>My Grocery delivers Fresh and Branded Grocery items right at your doorstep at extraordinary prices. Also get Free Delivery on your first order on My Grocery. Use coupon code FREEDEL when ordering for the first time.</p>
+          <p><a class="btn btn-secondary" href="/polls" role="button">View details »</a></p>
+        </div>
+      </div>
+  
+      <hr>
+  
+    </div> <!-- /container -->
+  
+  </main>
+{% endblock body %}
+
+{% block js %}
+<script>
+if (localStorage.getItem('cart') == null) {
+    var cart = {};
+} else {
+    cart = JSON.parse(localStorage.getItem('cart'));
+}
+console.log(cart);
+var sum = 0;
+if ($.isEmptyObject(cart)) {
+    //if object is empty
+    sum=0;
+
+} 
+else {
+
+    for (item in cart) {
+        let qty = cart[item][0];
+        sum = sum + qty;
+    }
+}
+document.getElementById('cart').innerHTML = sum;
+
+</script>
+{% endblock %}

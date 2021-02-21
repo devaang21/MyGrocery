@@ -1,0 +1,81 @@
+{% extends 'base.html' %}
+{% block title %}
+Contact Us
+{% endblock title %}
+{% block body %}
+<div class="container-fluid px-0">
+<img src="/static/contact.jpg" class="d-block w-100" alt="...">
+</div> 
+
+<div class="container my-5">
+<form method="post" action="/polls/contact">
+{% csrf_token %}
+  <div class="form-group">
+    <label for="name">Name</label>
+    <input type="text" class="form-control" id="name" name="name">
+  </div>
+
+  <div class="form-group">
+    <label for="email">Email address</label>
+    <input type="email" class="form-control" id="email" name="email" >
+  </div>
+ 
+  <div class="form-group">
+    <label for="phone">Mobile Number</label>
+    <input type="phone" class="form-control" id="phone" name="phone" >
+  </div> 
+
+  <div class="form-group">
+    <label for="City">Select State</label>
+    <select class="form-control" id="state" name="state">
+      <option>Mumbai</option>
+      <option>Chennai</option>
+      <option>Delhi</option>
+      <option>Banglore</option>
+      <option> Gurugram</option>
+      <option> Gandhinagar</option>
+    </select>
+  </div>
+
+  <div class="form-group">
+    <label for="desc">Reason</label>
+    <textarea class="form-control" id="desc" rows="2" name="desc"></textarea>
+  </div>
+
+  <button class="btn btn-primary" type="submit">Submit</button>
+
+
+
+</form>
+</div>
+
+
+
+
+{% endblock body %}
+
+{% block js %}
+<script>
+if (localStorage.getItem('cart') == null) {
+    var cart = {};
+} else {
+    cart = JSON.parse(localStorage.getItem('cart'));
+}
+console.log(cart);
+var sum = 0;
+if ($.isEmptyObject(cart)) {
+    //if object is empty
+    sum=0;
+
+} 
+else {
+
+    for (item in cart) {
+        let qty = cart[item][0];
+        sum = sum + qty;
+    }
+}
+document.getElementById('cart').innerHTML = sum;
+
+</script>
+{% endblock %}
