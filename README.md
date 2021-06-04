@@ -1,2 +1,2 @@
 # MyGrocery
-online ecommerce website, created using Django
+Ecommerce website, created using Django
